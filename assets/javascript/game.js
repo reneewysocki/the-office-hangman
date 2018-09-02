@@ -1,6 +1,6 @@
 //sets array of answers
 var answerArray = ["ANDY", "PAM", "KELLY", "STANLEY", "DWIGHT", "MEREDITH", "CREED", "DARRYL", "MICHAEL", "ANGELA", "PHYLLIS", "JIM", "OSCAR", "KEVIN", "RYAN" ]; 
-var hintArray = ["It is on like a prawn who yawns at dawn", "I feel God in this Chili’s tonight", "My resolution was to get more attention.", "If I don’t have some cake soon, I might die.", "Who is Justice Beaver?", "I have Vienna sausages and I have napkins.", "The Taliban’s the worst. Great heroin, though.", "’Fleece it Out’, ‘Going Mach 5’, ‘Dinkin’ Flicka’", "The worst thing about prison was the dementors!", "It’s not my fault. I was exposed to Harry Potter.", "If I wanted Jamaican food I'd just hire a bunch of body guards and go there.", "Bears. Beets. Battlestar Galactica.", "The only premature baby in this room is the one your baby ate.", "The trick is to undercook the onions.", "I'd like to make a toast. To the troops...all the troops...both sides."]; 
+var hintArray = ["It is on like a prawn who yawns at dawn", "I feel God in this Chili’s tonight", "My resolution was to get more attention.", "If I don’t have some cake soon, I might die.", "In an ideal world, I would have all 10 fingers on my left hand so my right hand could just be a fist for punching.", "I have Vienna sausages and I have napkins.", "The Taliban’s the worst. Great heroin, though.", "’Fleece it Out’, ‘Going Mach 5’, ‘Dinkin’ Flicka’", "The worst thing about prison was the dementors!", "It’s not my fault. I was exposed to Harry Potter.", "If I wanted Jamaican food I'd just hire a bunch of body guards and go there.", "Bears. Beets. Battlestar Galactica.", "The only premature baby in this room is the one your baby ate.", "The trick is to undercook the onions.", "I'd like to make a toast. To the troops...all the troops...both sides."]; 
 //holds selected answer 
 var choosenWord = "";
 //holds letters in answer 
@@ -16,7 +16,7 @@ var wrongLetters = [];
 //Counters
 var winCount = 0;
 var loseCount = 0;
-var guessesLeft = 10;
+var guessesLeft = 5;
 var rightGuessCounter = 0;
 
 //possible user inputs
@@ -27,7 +27,7 @@ function reset()
 {
 	//Chooses word randombly from the answer array
     //choosenWord = answerArray[Math.floor(Math.random() * answerArray.length)];
-    var randomNumber = Math.floor(Math.random() * 9);
+    var randomNumber = Math.floor(Math.random() * answerArray.length);
     choosenWord = answerArray[randomNumber];
     choosenHint = hintArray[randomNumber];
 	//Splits the choosen word into individual letters
@@ -39,7 +39,7 @@ function reset()
 	//===========================================================
 	letterGuessed = 0;
 	rightGuessCounter = 0;
-	guessesLeft = 9;
+	guessesLeft = 5;
 	wrongLetters =[];
 	blanksAndSuccesses =[];
 	letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -50,7 +50,7 @@ function startGame()
 {
 	//Chooses word randombly from the answer array
     //choosenWord = answerArray[Math.floor(Math.random() * answerArray.length)];
-    var randomNumber = Math.floor(Math.random() * 9);
+    var randomNumber = Math.floor(Math.random() * answerArray.length);
     choosenWord = answerArray[randomNumber];
     choosenHint = hintArray[randomNumber];
 	//Splits the choosen word into individual letters
@@ -60,7 +60,7 @@ function startGame()
 	
 	//RESET
 	rightGuessCounter = 0;
-	guessesLeft = 10;
+	guessesLeft = 5;
 	wrongLetters =[];
 	blanksAndSuccesses =[];
 	letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -114,7 +114,7 @@ function compareLetters(userKey)
 					guessesLeft--;
 					//Changes HTML
 					document.getElementById('numGuesses').innerHTML = guessesLeft;
-					document.getElementById('wrongGuesses').innerHTML = wrongLetters.join(' ');
+					document.getElementById('wrongGuesses').innerHTML = wrongLetters.join('   ');
 					//Test
 					console.log('Wrong Letters = ' + wrongLetters);
 					console.log('Guesses left are ' + guessesLeft);
@@ -147,14 +147,14 @@ function winLose()
 	}
 }
 
-
+//listens for user input 
 document.onkeyup = function(event)
 {
 	test = true;
 	var letterGuessed = event.key.toUpperCase();
 	for(var i = 0; i < letters.length; i++)
 	{	
-		if(letterGuessed === letters[i] && test === true)
+		if(letterGuessed === letters[i]  && test === true)
 		{
 			var spliceDword = letters.splice(i,1);
 			//Test
@@ -171,13 +171,12 @@ document.onkeyup = function(event)
 
 var body = document.getElementById("body");
 var enter = document.getElementById("enter");
-
-
-//listens for enter to initate game
-body.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
+//listens for user input
+//document.addEventListener("keyup", function(event) {
+    //if (event.keyCode === 13) {
         startGame();
         //hides enter text in html
-        enter.style.display = "none";
-    }
-});
+      //  enter.style.display = "none";
+//	}
+
+//});

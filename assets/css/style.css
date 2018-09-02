@@ -3,12 +3,18 @@
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-weight: bold;
+    font-size: 1.25em;
 }
 
 div {
-    padding: 20px;
+    padding: 25px;
 }
 
 #wordToGuess {
     font-size: 25px;
+}
+
+#hint {
+    font-size: 20px;
+    font-style: italic;
 }

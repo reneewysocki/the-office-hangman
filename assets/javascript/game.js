@@ -1,6 +1,6 @@
 //sets array of answers
-var answerArray = ["ANDY", "PAM", "KELLY", "STANLEY", "DWIGHT", "MEREDITH", "CREED", "DARRYL", "MICHAEL", "ANGELA", "PHYLLIS", "JIM", "OSCAR", "KEVIN", "RYAN" ]; 
-var hintArray = ["It is on like a prawn who yawns at dawn", "I feel God in this Chili’s tonight", "My resolution was to get more attention.", "If I don’t have some cake soon, I might die.", "In an ideal world, I would have all 10 fingers on my left hand so my right hand could just be a fist for punching.", "I have Vienna sausages and I have napkins.", "The Taliban’s the worst. Great heroin, though.", "’Fleece it Out’, ‘Going Mach 5’, ‘Dinkin’ Flicka’", "The worst thing about prison was the dementors!", "It’s not my fault. I was exposed to Harry Potter.", "If I wanted Jamaican food I'd just hire a bunch of body guards and go there.", "Bears. Beets. Battlestar Galactica.", "The only premature baby in this room is the one your baby ate.", "The trick is to undercook the onions.", "I'd like to make a toast. To the troops...all the troops...both sides."]; 
+var answerArray = ["ANDY", "PAM", "KELLY", "STANLEY", "DWIGHT", "MEREDITH", "CREED", "DARRYL", "MICHAEL", "ANGELA", "PHYLLIS", "JIM", "OSCAR", "KEVIN", "RYAN", "TOBY", "GABE", "JAN", "ERIN" ]; 
+var hintArray = ["'It is on like a prawn who yawns at dawn.'", "'I feel God in this Chili’s tonight.'", "'My resolution was to get more attention.'", "'If I don’t have some cake soon, I might die.'", "'In an ideal world, I would have all 10 fingers on my left hand so my right hand could just be a fist for punching.'", "'I have Vienna sausages and I have napkins.'", "'The Taliban’s the worst. Great heroin, though.'", "'‘Fleece it Out’, ‘Going Mach 5’, ‘Dinkin’ Flicka’'", "'The worst thing about prison was the dementors!'", "'It’s not my fault. I was exposed to Harry Potter.'", "'We have a gym at home. It's called the bedroom.'", "'Bears. Beets. Battlestar Galactica.'", "'The only premature baby in this room is the one your baby ate.'", "'The trick is to undercook the onions.'", "'I'd like to make a toast. To the troops...all the troops...both sides.'", "'There's no shame in getting beat up by a girl. My ex-wife used to demolish me.'", "'SHUT UP ABOUT THE SUN!'", "'What did I tell you about 'yeppers'?'", "'And then my last job was at a Taco Bell Express. But then it became a full-time Taco Bell and... I don't know. I couldn't keep up.'"]; 
 //holds selected answer 
 var choosenWord = "";
 //holds letters in answer 
@@ -18,6 +18,10 @@ var winCount = 0;
 var loseCount = 0;
 var guessesLeft = 5;
 var rightGuessCounter = 0;
+//sounds
+var godNo = new Audio("assets/images/no-god-please.wav");
+var awesome = new Audio("assets/images/Awesome.mp3");	
+var theme = new Audio("assets/images/theme.wav");	
 
 //possible user inputs
 var letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -46,6 +50,9 @@ function reset()
 	test=false;
 	startGame();
 }
+
+
+
 function startGame()
 {
 	//Chooses word randombly from the answer array
@@ -121,8 +128,11 @@ function compareLetters(userKey)
 				}
 			
 			
-		
 }
+
+
+
+
 function winLose()
 {
 	// When number blanks if filled with right words then you win
@@ -131,6 +141,7 @@ function winLose()
 		//Counts Wins 
 		winCount++;
 		//Changes HTML
+		awesome.play();
 		document.getElementById('wins').innerHTML = winCount;
 		alert("You're Right! It was " + choosenWord + '!');
 		reset();
@@ -141,6 +152,7 @@ function winLose()
 		//Counts losses
 		loseCount++;
 		//Changes HTML
+		godNo.play();
 		document.getElementById('loses').innerHTML = loseCount;
 		alert('You Lose!');
 		reset();
@@ -168,13 +180,14 @@ document.onkeyup = function(event)
 		
 }
 
+startGame();
+//theme.play();
 
 var body = document.getElementById("body");
 var enter = document.getElementById("enter");
-//listens for user input
 //document.addEventListener("keyup", function(event) {
     //if (event.keyCode === 13) {
-        startGame();
+        
         //hides enter text in html
       //  enter.style.display = "none";
 //	}

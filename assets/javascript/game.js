@@ -16,7 +16,7 @@ var wrongLetters = [];
 //Counters
 var winCount = 0;
 var loseCount = 0;
-var guessesLeft = 5;
+var guessesLeft = 6;
 var rightGuessCounter = 0;
 //sounds
 var godNo = new Audio("assets/images/no-god-please.wav");
@@ -43,7 +43,7 @@ function reset()
 	//===========================================================
 	letterGuessed = 0;
 	rightGuessCounter = 0;
-	guessesLeft = 5;
+	guessesLeft = 6;
 	wrongLetters =[];
 	blanksAndSuccesses =[];
 	letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -67,7 +67,7 @@ function startGame()
 	
 	//RESET
 	rightGuessCounter = 0;
-	guessesLeft = 5;
+	guessesLeft = 6;
 	wrongLetters =[];
 	blanksAndSuccesses =[];
 	letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -182,6 +182,7 @@ document.onkeyup = function(event)
 
 startGame();
 //theme.play();
+
 
 var body = document.getElementById("body");
 var enter = document.getElementById("enter");

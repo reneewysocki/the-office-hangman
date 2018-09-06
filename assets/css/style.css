@@ -14,7 +14,7 @@
     font-weight: bold;
     font-size: 1.25em;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 15px;
     padding-bottom: 50px;
 }
@@ -50,4 +50,11 @@ div {
 img {
     width: 60%;
     height: auto;
+}
+
+@media screen and (max-width: 800px) {
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
